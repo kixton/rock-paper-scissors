@@ -2,14 +2,14 @@ require_relative './spec_helper.rb'
 
 describe 'RockPapeScis' do
 
-  let(:kim) { {name: 'Kim', move: 'rock'} }
-  let(:jeff) { {name: 'Jeff', move: 'paper'} }  
-  let(:peng) { {name: 'Peng', move: 'scissors'} }
-  let(:pong) { {name: 'Pong', move: 'scissors'} }  
+  let(:kim) { {id: 1, move: 'rock'} }
+  let(:jeff) { {id: 2, move: 'paper'} }  
+  let(:peng) { {id: 3, move: 'scissors'} }
+  let(:pong) { {id: 4, move: 'scissors'} }  
 
   describe 'play' do
-    it 'player has name and move' do
-      expect(kim[:name]).to eq('Kim')
+    it 'player has id and move' do
+      expect(kim[:id]).to eq(1)
       expect(kim[:move]).to eq('rock')
     end
 
@@ -19,25 +19,25 @@ describe 'RockPapeScis' do
       expect(kim[:move]).to eq('rock')
       expect(peng[:move]).to eq('scissors')
 
-      expect(game).to eq('Kim wins!')
+      expect(game).to eq(1)
     end
 
     it 'paper beats rock' do
       game = RockPapeScis.play(jeff, kim)
 
-      expect(game).to eq('Jeff wins!')
+      expect(game).to eq(2)
     end
 
     it 'scissors beats paper' do
       game = RockPapeScis.play(peng, jeff)
 
-      expect(game).to eq('Peng wins!')
+      expect(game).to eq(3)
     end    
 
     it 'two scissors tie' do
       game = RockPapeScis.play(peng, pong)
 
-      expect(game).to eq('Tie')
+      expect(game).to eq(-1)
     end
 
   end # end of play
