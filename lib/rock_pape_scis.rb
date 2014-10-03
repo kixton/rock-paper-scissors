@@ -1,16 +1,18 @@
 require "rock_pape_scis/version"
 
 module RockPapeScis
-  def self.play(player_1, player_2)
+  def self.play(players)
+    # {:player_1 =>  {:move, :id}}
+    # {:player_2 => {:move, :id}}
 
-    if player_1[:move] == player_2[:move]
+    if players[:player_1][:move] == players[:player_2][:move]
       -1
-    elsif (player_1[:move] == 'rock' && player_2[:move] == 'scissors') || 
-          (player_1[:move] == 'paper' && player_2[:move] == 'rock') ||
-          (player_1[:move] == 'scissors' && player_2[:move] == 'paper')
-      player_1[:id]
+    elsif (players[:player_1][:move] == 'rock' && players[:player_2][:move] == 'scissors') || 
+          (players[:player_1][:move] == 'paper' && players[:player_2][:move] == 'rock') ||
+          (players[:player_1][:move] == 'scissors' && players[:player_2][:move] == 'paper')
+      players[:player_1][:id]
     else
-      player_2[:id]
+      players[:player_2][:id]
     end
     
   end # end of play

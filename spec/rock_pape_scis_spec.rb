@@ -14,7 +14,7 @@ describe 'RockPapeScis' do
     end
 
     it 'rock beats scissors' do
-      game = RockPapeScis.play(kim, peng)
+      game = RockPapeScis.play(player_1: kim, player_2: peng)
 
       expect(kim[:move]).to eq('rock')
       expect(peng[:move]).to eq('scissors')
@@ -23,19 +23,19 @@ describe 'RockPapeScis' do
     end
 
     it 'paper beats rock' do
-      game = RockPapeScis.play(jeff, kim)
+      game = RockPapeScis.play(player_1: jeff, player_2: kim)
 
       expect(game).to eq(2)
     end
 
     it 'scissors beats paper' do
-      game = RockPapeScis.play(peng, jeff)
+      game = RockPapeScis.play(player_1: peng, player_2: jeff)
 
       expect(game).to eq(3)
     end    
 
     it 'two scissors tie' do
-      game = RockPapeScis.play(peng, pong)
+      game = RockPapeScis.play(player_1: peng, player_2: pong)
 
       expect(game).to eq(-1)
     end
